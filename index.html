@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Tracker - Real-Time Prices</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar glass">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">₿</span>
+                <span class="logo-text">CryptoTracker</span>
+            </div>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search crypto (BTC, ETH, SOL...)">
+                <button id="searchBtn">🔍</button>
+            </div>
+            <div class="nav-actions">
+                <div class="market-status" id="marketStatus">
+                    <span class="status-dot"></span>
+                    <span>Live</span>
+                </div>
+                <button class="theme-toggle" id="themeToggle">🌙</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Sidebar Watchlist -->
+        <aside class="watchlist-sidebar glass">
+            <div class="sidebar-header">
+                <h3>⭐ Watchlist</h3>
+                <span class="watchlist-count" id="watchlistCount">0</span>
+            </div>
+            <div id="watchlistItems" class="watchlist-items"></div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Cryptos Section -->
+            <section class="crypto-section">
+                <h2 class="section-title">Top Cryptocurrencies</h2>
+                <div id="cryptoGrid" class="crypto-grid"></div>
+            </section>
+
+            <!-- Charts Section -->
+            <section class="charts-section">
+                <div class="chart-card glass">
+                    <div class="chart-header">
+                        <h3 id="chartTitle">Bitcoin (BTC)</h3>
+                        <div class="chart-controls">
+                            <button class="time-btn active" data-days="1">24H</button>
+                            <button class="time-btn" data-days="7">7D</button>
+                            <button class="time-btn" data-days="30">30D</button>
+                        </div>
+                    </div>
+                    <canvas id="priceChart"></canvas>
+                </div>
+
+                <div class="chart-card glass">
+                    <div class="chart-header">
+                        <h3>Trading Volume</h3>
+                    </div>
+                    <canvas id="volumeChart"></canvas>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div class="loader" id="loader">
+        <div class="spinner"></div>
+        <p>Loading crypto data...</p>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
